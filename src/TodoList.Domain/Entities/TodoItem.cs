@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace TodoList.Domain.Entities;
 
 public class TodoItem
@@ -9,6 +11,19 @@ public class TodoItem
     public bool IsCompleted { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
+
+    [JsonConstructor]    // only used for json deserializationn.
+    private TodoItem(Guid id, string title, string? description, DateTime? dueDate,
+                      bool isCompleted, DateTime createdAt, DateTime? updatedAt)
+    {
+        Id = id;
+        Title = title;
+        Description = description;
+        DueDate = dueDate;
+        IsCompleted = isCompleted;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
+    }
 
     public TodoItem(string title, string? description = null, DateTime? dueDate = null)
     {
