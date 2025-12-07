@@ -1,0 +1,25 @@
+﻿## Visual Studio
+*.rsuser
+*.suo
+*.user
+.vs/
+.vscode/
+.idea/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+
+# Data files
+Data/
+data/
+*.json
+!appsettings*.json
+!package*.json
+!tsconfig.json
+
+# Node
+node_modules/
+npm-debug.log*
