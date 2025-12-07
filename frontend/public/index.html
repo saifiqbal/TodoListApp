@@ -1,0 +1,140 @@
+﻿<!-- frontend/public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#9333ea" />
+    <meta
+      name="description"
+      content="A modern todo list application built with React and .NET"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Todo List - Stay Organized</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>
+
+<!-- ============================================ -->
+<!-- frontend/public/manifest.json -->
+<!-- ============================================ -->
+<!--
+{
+  "short_name": "Todo List",
+  "name": "Todo List Application",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#9333ea",
+  "background_color": "#ffffff"
+}
+-->
+
+<!-- ============================================ -->
+<!-- frontend/.env.development -->
+<!-- ============================================ -->
+<!--
+REACT_APP_API_URL=http://localhost:5000/api
+-->
+
+<!-- ============================================ -->
+<!-- frontend/.env.production -->
+<!-- ============================================ -->
+<!--
+REACT_APP_API_URL=http://localhost:5000/api
+-->
+
+<!-- ============================================ -->
+<!-- frontend/README.md -->
+<!-- ============================================ -->
+<!--
+# Todo List Frontend
+
+React + TypeScript frontend for the Todo List application.
+
+## Getting Started
+
+### Prerequisites
+- Node.js 18+ and npm
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+
+# Build for production
+npm run build
+
+# Run tests
+npm test
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the frontend directory:
+
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+```
+
+### Available Scripts
+
+- `npm start` - Run development server (http://localhost:3000)
+- `npm run build` - Build production bundle
+- `npm test` - Run tests
+- `npm run eject` - Eject from Create React App (not recommended)
+
+## Project Structure
+
+```
+frontend/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── TodoList.tsx
+│   │   ├── TodoItem.tsx
+│   │   ├── TodoForm.tsx
+│   │   └── FilterBar.tsx
+│   ├── services/
+│   │   └── todoApi.ts
+│   ├── types/
+│   │   └── todo.types.ts
+│   ├── App.tsx
+│   └── index.tsx
+└── package.json
+```
+
+## Features
+
+- ✅ Create, read, update, delete todos
+- ✅ Mark todos as complete/incomplete
+- ✅ Filter by status (all, active, completed, overdue)
+- ✅ Sort by date or title
+- ✅ Inline editing
+- ✅ Responsive design
+- ✅ Error handling and loading states
+
+## Tech Stack
+
+- React 18
+- TypeScript
+- Axios for API calls
+- Lucide React for icons
+- Custom CSS (Tailwind-inspired utilities)
+-->
