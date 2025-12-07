@@ -1,0 +1,48 @@
+# Build stage
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copy solution and project files
+COPY TodoList.sln ./
+COPY src/TodoList.Domain/TodoList.Domain.csproj src/TodoList.Domain/
+COPY src/TodoList.Application/TodoList.Application.csproj src/TodoList.Application/
+COPY src/TodoList.Infrastructure/TodoList.Infrastructure.csproj src/TodoList.Infrastructure/
+COPY src/TodoList.API/TodoList.API.csproj src/TodoList.API/
+COPY tests/TodoList.Domain.Tests/TodoList.Domain.Tests.csproj tests/TodoList.Domain.Tests/
+COPY tests/TodoList.Application.Tests/TodoList.Application.Tests.csproj tests/TodoList.Application.Tests/
+
+
+# Restore dependencies
+RUN dotnet restore TodoList.sln
+
+# Copy all source files
+COPY src/ src/
+COPY tests/ tests/
+
+# Build the application
+WORKDIR /src/src/TodoList.API
+RUN dotnet build -c Release -o /app/build
+
+# Publish stage
+FROM build AS publish
+RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
+
+# Runtime stage
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+
+# Create data directory with permissions
+RUN mkdir -p /app/Data && chmod 777 /app/Data
+
+# Copy published files
+COPY --from=publish /app/publish .
+
+# Expose port
+EXPOSE 8080
+
+# Set environment variables
+ENV ASPNETCORE_URLS=http://+:8080
+ENV DataFilePath=/app/Data/todos.json
+
+# Run the application
+ENTRYPOINT ["dotnet", "TodoList.API.dll"]
