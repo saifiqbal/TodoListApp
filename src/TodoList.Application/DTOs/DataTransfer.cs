@@ -1,0 +1,41 @@
+namespace TodoList.Application.DTOs;
+
+public record TodoItemDto(
+    Guid Id,
+    string Title,
+    string? Description,
+    DateTime? DueDate,
+    bool IsCompleted,
+    DateTime CreatedAt,
+    DateTime? UpdatedAt,
+    bool IsOverdue
+);
+
+public record CreateTodoDto(
+    string Title,
+    string? Description = null,
+    DateTime? DueDate = null
+);
+
+public record UpdateTodoDto(
+    string? Title = null,
+    string? Description = null,
+    DateTime? DueDate = null
+);
+
+public static class TodoMappingExtensions
+{
+    public static TodoItemDto ToDto(this Domain.Entities.TodoItem item)
+    {
+        return new TodoItemDto(
+            item.Id,
+            item.Title,
+            item.Description,
+            item.DueDate,
+            item.IsCompleted,
+            item.CreatedAt,
+            item.UpdatedAt,
+            item.IsOverdue()
+        );
+    }
+}
