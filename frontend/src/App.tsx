@@ -4,7 +4,7 @@ import { TodoForm } from './components/TodoForm';
 import { FilterBar } from './components/FilterBar';
 import { todoApi } from './services/todoApi';
 import { TodoItem, CreateTodoDto, UpdateTodoDto, FilterType, SortType } from './types/todo.types';
-import { CheckCircle2, Loader, AlertCircle } from 'lucide-react';
+import { Loader, AlertCircle } from 'lucide-react';
 import './App.css';
 
 function App() {
